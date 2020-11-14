@@ -1,16 +1,47 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>info : {{ info }}</h2>
+    <button @click="loadData">Load Data</button>
+    <h2>Welcome {{ info.idTokenParsed.preferred_username }}</h2>
+    <h2>Fruits1 : {{ fruitsArray }}</h2>
+    <button @click="bye">Quitter</button>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String,
     info: Object
+  },
+  data() {
+    return {
+      fruitsArray: []
+    }
+  },
+  methods: {
+    loadData: function () {
+      let vm = this
+      //
+      console.log("Getting data")
+      axios.get("http://localhost:3000/fruit", {
+        headers: {
+          Authorization: 'Bearer ' + vm.info.token
+        }
+      }).then(function (res) {
+        vm.fruitsArray = res.data
+        console.log("load:" + res.data)
+      }).catch(function (err) {
+        alert(err)
+      })
+    },
+    bye: function () {
+      let vm = this
+      vm.info.logout()
+    }
   }
 }
 </script>
