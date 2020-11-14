@@ -1,6 +1,6 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Vue logo" src="./assets/logo.png"/>
+  <HelloWorld msg="OK App" v-bind:info=kc/>
 </template>
 
 <script>
@@ -8,8 +8,20 @@ import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
+  props: {
+    kc: Object
+  },
   components: {
     HelloWorld
+  },
+  methods: {
+    showKc: function () {
+      var vm = this
+      console.log("ShowKc. Token:" + vm.kc.token)
+    }
+  },
+  created() {
+    this.showKc()
   }
 }
 </script>

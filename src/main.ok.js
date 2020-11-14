@@ -30,12 +30,7 @@ keycloak.init({onLoad: initOptions.onLoad}).success((auth) => {
     localStorage.setItem("vue-token", keycloak.token);
     localStorage.setItem("vue-refresh-token", keycloak.refreshToken);
 
-    const app = createApp(App,
-        {
-            kc: keycloak
-        })
-
-    app.mount('#app');
+    createApp(App).mount('#app');
 
     setInterval(() => {
         keycloak.updateToken(70).success((refreshed) => {
