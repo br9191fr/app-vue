@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="OK App" v-bind:info=kc/>
+  <HelloWorld msg="OK App" v-bind:info=kc />
 </template>
 
 <script>

@@ -25,7 +25,7 @@ export default {
   methods: {
     loadData: function () {
       let vm = this
-      //
+      // Authorization: 'Bearer ' + vm.info.token
       console.log("Getting data")
       axios.get("http://localhost:3000/fruit", {
         headers: {
