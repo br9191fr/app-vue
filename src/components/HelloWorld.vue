@@ -4,6 +4,7 @@
     <button @click="loadData">Load Data</button>
     <h2>Welcome {{ info.idTokenParsed.preferred_username }}</h2>
     <h2>Fruits1 : {{ fruitsArray }}</h2>
+    <h2>Subscriber Id: {{ subscriber }}</h2>
     <button @click="bye">Quitter</button>
   </div>
 </template>
@@ -19,7 +20,8 @@ export default {
   },
   data() {
     return {
-      fruitsArray: []
+      fruitsArray: [],
+      subscriber: String
     }
   },
   methods: {
@@ -34,6 +36,16 @@ export default {
       }).then(function (res) {
         vm.fruitsArray = res.data
         console.log("load:" + res.data)
+      }).catch(function (err) {
+        alert(err)
+      })
+      axios.get("http://localhost:3000/subscriber", {
+        headers: {
+          Authorization: 'Bearer ' + vm.info.token
+        }
+      }).then(function (res) {
+        vm.subscriber = res.data.subscriber
+        console.log("load:" + res.data.subscriber)
       }).catch(function (err) {
         alert(err)
       })

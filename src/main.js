@@ -24,9 +24,7 @@ keycloak.init({onLoad: initOptions.onLoad}).success((auth) => {
         myData.token = keycloak.token;
     }
 
-    //console.log('id token\n' + keycloak.idToken);
-    //console.log('token\n' + keycloak.token);
-    //console.log('refresh token\n' + keycloak.refreshToken);
+
     localStorage.setItem("vue-token", keycloak.token);
     localStorage.setItem("vue-refresh-token", keycloak.refreshToken);
 
