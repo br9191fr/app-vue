@@ -45,7 +45,7 @@ keycloak.init({onLoad: initOptions.onLoad}).success((auth) => {
         }).error(() => {
             console.log('Failed to refresh');
         });
-    }, 60000)
+    }, 10000)
 
 }).error(() => {
     console.log('Auth failed');
