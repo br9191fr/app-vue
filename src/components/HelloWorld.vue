@@ -39,6 +39,7 @@ export default {
       }).catch(function (err) {
         alert(err)
       })
+      vm.subscriber ="None"
       axios.get("http://localhost:3000/subscriber", {
         headers: {
           Authorization: 'Bearer ' + vm.info.token
